@@ -4,7 +4,6 @@ import Burger from "../../Burger/Burger";
 import classes from "./CheckoutSummary.module.css";
 
 const checkoutSummary = (props) => {
-  console.log(props.ingredients);
   return (
     <div className={classes.CheckoutSummary}>
       <h1> We hope it tests well</h1>

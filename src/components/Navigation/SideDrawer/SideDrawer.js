@@ -12,7 +12,7 @@ const sideDrawer = (props) => {
   return (
     <React.Fragment>
       <Backdrop show={props.open} removeModal={props.closed} />
-      <div className={attchedClasses.join(" ")}>
+      <div className={attchedClasses.join(" ")} onClick={props.closed}>
         <Logo height="11%" margineBottom="52px" />
         <nav>
           <NavigationItems isAuthenticated={props.isAuth} />

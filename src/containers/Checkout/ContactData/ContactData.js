@@ -6,6 +6,7 @@ import Spinner from "../../../components/UI/Spinner/Spinner";
 import Input from "../../../components/UI/Input/Input";
 import { connect } from "react-redux";
 import axios from "../../../axios-order";
+import { updateObject, checkValidity } from "../../../Shared/untility";
 import * as actions from "../../../store/actions/index";
 
 class ContactData extends Component {
@@ -133,15 +134,21 @@ class ContactData extends Component {
 
   inputChangeHandler = (event, inputIdentifier) => {
     //console.log(event.target.value);
-    const updatedOrderForm = { ...this.state.orderFrom };
-    const updatedOrderFormElement = { ...updatedOrderForm[inputIdentifier] };
-    updatedOrderFormElement.value = event.target.value;
-    updatedOrderFormElement.valid = this.checkValidity(
-      updatedOrderFormElement.value,
-      updatedOrderFormElement.validation
+
+    const updatedOrderFormElement = updateObject(
+      this.state.orderFrom[inputIdentifier],
+      {
+        value: event.target.value,
+        valid: checkValidity(
+          event.target.value,
+          this.state.orderFrom[inputIdentifier].validation
+        ),
+        touched: true,
+      }
     );
-    updatedOrderFormElement.touched = true;
-    updatedOrderForm[inputIdentifier] = updatedOrderFormElement;
+    const updatedOrderForm = updateObject(this.state.orderFrom, {
+      [inputIdentifier]: updatedOrderFormElement,
+    });
 
     let formIsValid = true;
     for (let inputIdentifier in updatedOrderForm) {

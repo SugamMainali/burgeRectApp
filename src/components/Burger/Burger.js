@@ -3,7 +3,6 @@ import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 import classes from "./Burger.module.css";
 
 const burger = (props) => {
-  console.log(props.ingredient);
   let transformedIngredient = Object.keys(props.ingredient)
     .map((igKey) => {
       // console.log(Object.keys(props.ingredient));

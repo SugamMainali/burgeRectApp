@@ -1,5 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
-import { updateObject } from "./../untility";
+import { updateObject } from "../../Shared/untility";
 
 const initialState = {
   ingredient: null,
@@ -38,7 +38,7 @@ const reducer = (state = initialState, action) => {
       };
       const updatedIngredts = updateObject(state.ingredient, updatedIngredt);
       const updatedSta = {
-        ingredient: updatedIngredt,
+        ingredient: updatedIngredts,
         totalPrice:
           state.totalPrice - INGEREDIENT_PRICES[action.ingredientName],
         building: true,
@@ -58,8 +58,9 @@ const reducer = (state = initialState, action) => {
       });
     case actionTypes.FETCH_INGREDIENT_FAILS:
       return updateObject(state, { error: true });
-  }
 
+    default:
+  }
   return state;
 };
 

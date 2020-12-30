@@ -1,5 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
-import { updateObject } from "../untility";
+import { updateObject } from "../../Shared/untility";
 
 const intialState = {
   token: null,
@@ -47,7 +47,6 @@ const authFail = (state, action) => {
 };
 
 const reducer = (state = intialState, action) => {
-  console.log(action.type);
   switch (action.type) {
     case actionTypes.AUTH_START:
       return authStart(state, action);
